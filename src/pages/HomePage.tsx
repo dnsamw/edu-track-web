@@ -1,18 +1,20 @@
-import React, { useContext } from 'react'
-import LoginForm from '../components/organisms/LoginForm'
-import UserContext from '../app/context/UserContext';
-import useGoogleAuth from '../app/hooks/useGoogleAuth';
+import React, { useContext } from "react";
+import LoginForm from "../components/organisms/LoginForm";
+import UserContext from "../app/context/UserContext";
+import useGoogleAuth from "../app/hooks/useGoogleAuth";
+import { AuthContext } from "../app/context/AuthContext";
 
-type Props = {}
+type Props = {};
 
 function HomePage({}: Props) {
+  const { dispatch } = useContext(AuthContext);
 
-    const { user, setUser } = useContext(UserContext);
-    const googleLogin = useGoogleAuth();
+  const { user } = useContext(UserContext);
+  const googleLogin = useGoogleAuth();
   return (
     <>
-          <div className="flex flex-col justify-center items-center h-screen">
-        <LoginForm />
+      <div className="flex flex-col justify-center items-center h-screen">
+        <LoginForm dispatch={dispatch} />
         <div>
           {user ? (
             <div className="flex flex-col justify-center items-center gap-4">
@@ -32,19 +34,17 @@ function HomePage({}: Props) {
               onClick={() => googleLogin()}
             >
               <div className="flex justify-center items-center gap-3">
-              <span>
-                <img className="w-8 h-8" src="/img/google_g_logo.svg"/>
-              </span>
-              <span>
-                Sign in with Google
+                <span>
+                  <img className="w-8 h-8" src="/img/google_g_logo.svg" />
                 </span>
+                <span>Sign in with Google</span>
               </div>
             </button>
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

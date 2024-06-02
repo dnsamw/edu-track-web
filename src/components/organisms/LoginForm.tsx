@@ -1,14 +1,18 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, ReducerAction, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signInWithEmailAndPassword} from 'firebase/auth'
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
-type Props = {};
+type Props = {
+  dispatch: any
+};
 
-function LoginForm({}: Props) {
+function LoginForm({ dispatch }: Props) {
+  const navigate = useNavigate();
 
   const schema = z.object({
     email: z.string().min(1).email(),
@@ -23,20 +27,20 @@ function LoginForm({}: Props) {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-
     signInWithEmailAndPassword(firebaseAuth, data.email, data.password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log({user});
-      
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;   
-    });
-};
+      .then((userCredential) => {
+        const user = userCredential.user;
 
-
+        if (user) {
+          dispatch({type:'login',payload:user});
+          navigate("/profile")
+        };
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
 
   return (
     <>
