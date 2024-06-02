@@ -2,6 +2,7 @@ import { useContext } from "react";
 import UserContext from "./app/context/UserContext";
 import useGoogleAuth from "./app/hooks/useGoogleAuth";
 import NavBar from "./components/NavBar";
+import LoginForm from "./components/organisms/LoginForm";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-screen">
+        <LoginForm />
         <div>
           {user ? (
             <div className="flex flex-col justify-center items-center gap-4">
@@ -26,10 +28,17 @@ function App() {
             </div>
           ) : (
             <button
-              className="rounded-full text-white bg-sky-500 px-16 py-6 text-2xl hover:bg-sky-400"
+              className="rounded-full bg-gray-50 px-16 py-4 text-2xl border  hover:bg-gray-300"
               onClick={() => googleLogin()}
             >
-              Sign in with Google
+              <div className="flex justify-center items-center gap-3">
+              <span>
+                <img className="w-8 h-8" src="/img/google_g_logo.svg"/>
+              </span>
+              <span>
+                Sign in with Google
+                </span>
+              </div>
             </button>
           )}
         </div>

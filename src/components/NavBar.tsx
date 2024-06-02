@@ -8,7 +8,7 @@ type Props = {};
 function NavBar({}: Props) {
   const { user } = useContext(UserContext);
   return (
-    <nav className="fixed flex h-24 bg-gray-300 w-screen">
+    <nav className="fixed flex h-24 bg-gray-50 w-screen">
       <div className="flex justify-start items-center pl-8 w-[50%]">
         <BrandLogo />
       </div>
