@@ -1,0 +1,11 @@
+.escape-button {
+    /* Base button styles */
+    position: relative; /* Needed for movement */
+    cursor: pointer;
+    transition: transform 0.2s ease-out; /* Smooth movement on hover */
+  }
+  
+  .escape-button:hover {
+    transform: translateX(210px); /* Move 10px right on hover */
+  }
+  
