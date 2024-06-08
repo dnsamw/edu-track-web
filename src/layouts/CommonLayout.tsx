@@ -7,12 +7,12 @@ type Props = {
 
 const CommonLayout = ({ isTopNav = false }: Props) => {
   return (
-    <>
-      <NavBar />
-      <main className={`flex flex-col ${isTopNav ? "mt-30" : "mt-2"}`}>
+    <div className="max-h-screen" style={{maxHeight:'100vh !important'}}>
+      <NavBar/>
+      <main className={`flex flex-col items-center bg-sky-500 max-h-screen ${isTopNav ? "mt-30" : "mt-2"}`}>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 

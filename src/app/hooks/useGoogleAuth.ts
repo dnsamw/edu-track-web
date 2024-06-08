@@ -4,8 +4,7 @@ import { useContext } from "react";
 import UserContext from "../context/UserContext";
 
 const useGoogleAuth = () => {
-  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const googleLogin = useGoogleLogin({
     onSuccess: async (response) => {
@@ -20,7 +19,7 @@ const useGoogleAuth = () => {
           }
         );
         const profileData = profileResponse.data;
-        console.log(profileData);
+        // console.log(profileData);
 
         setUser(profileData); // Update user context
       } catch (error) {

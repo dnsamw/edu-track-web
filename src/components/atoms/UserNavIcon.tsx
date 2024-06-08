@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   userDpUrl?: string;
@@ -13,13 +14,13 @@ function UserNavIcon({
 }: Props) {
   return (
     <>
-      <div className="flex gap-4 items-center h-[100%] p-2">
-        <img className="h-[100%] rounded-full" src={userDpUrl} alt={userName} />
+      <Link to={"/profile"} className="flex gap-4 items-center h-[100%] p-2">
+        <img className="h-[100%] rounded-full border-4 border-slate-300" src={userDpUrl} alt={userName} />
         <div className="flex flex-col">
-          <span className="text-3xl font-blod">{userName}</span>
-          <span>{userEmail}</span>
+          <span className="text-2xl font-semibold text-slate-900">{userName}</span>
+          <span className="text-xs">{userEmail}</span>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

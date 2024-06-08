@@ -83,7 +83,7 @@ function LoginForm({ dispatch }: Props) {
         <div className="flex justify-center items-center">
           <button
             disabled={!isValid}
-            className="text-2xl rounded-full text-white bg-gray-600 px-16 py-3  hover:bg-gray-500"
+            className="text-2xl rounded-full text-white bg-gray-500 px-8 py-3  hover:bg-gray-600"
             type="submit"
           >
             Login
