@@ -20,20 +20,19 @@ function ResultListItem({
       <div
         onClick={() => {
           setSelectedIndex(id);
-          console.log(selectedIndex);
         }}
-        className={`flex rounded-xl w-full min-h-[100px] bg-gray-100 border cursor-pointer ${
-          selectedIndex === id ? "bg-sky-50 border-sky-500" : ""
+        className={`flex rounded-xl w-full min-h-[100px]  border cursor-pointer ${
+          selectedIndex === id ? "text-white bg-sky-500 border-sky-500" : "bg-white"
         }`}
       >
         <div className="flex flex-col justify-center w-[70%] pl-4">
           <div className="text-xl font-semibold">{title}</div>
-          <div className="text-l text-gray-700">{unit}</div>
-          <div className="text-sm text-gray-400">{date}</div>
+          <div className="text-sm text-black">{date}</div>
+          {/* <div className="text-l text-gray-700">{unit}</div> */}
         </div>
-        <div className="flex flex-col justify-center w-[30%] text-4xl font-semibold">
+        {/* <div className="flex flex-col justify-center w-[30%] text-4xl font-semibold">
           {score}%
-        </div>
+        </div> */}
       </div>
     </>
   );

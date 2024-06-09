@@ -1,9 +1,29 @@
 import { ReducerAction } from "react";
 
 type AuthUser = {
-  id: string;
-  username: string;
+  providerId: string;
+  proactiveRefresh: string;
+  reloadUserInfo: string;
+  reloadListener: string;
+  uid: string;
+  auth: string;
+  stsTokenManager: string;
+  accessToken: string;
+  displayName: string;
+  email: string;
+  emailVerified: string;
+  phoneNumber: string;
+  photoURL: string;
+  isAnonymous: string;
+  tenantId: string;
+  providerData: string;
+  metadata: string;
 };
+
+export const AUTH_ACTIONS = {
+  LOGIN:'login',
+  LOGOUT:'logout',
+}
 
 export type AuthState = {
   currentUser: AuthUser | null;

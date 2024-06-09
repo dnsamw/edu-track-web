@@ -9,15 +9,16 @@ import TextCard from "../components/molecules/TextCard";
 type Props = {};
 
 function ProfilePage({}: Props) {
-  const { state } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
 
   const [results, setResults] = useState<ExamResult[] | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const currentResult = results?.find((r) => r.id === selectedIndex);
-
+  
   useEffect(() => {
     setResults(examResults);
+    setSelectedIndex(examResults[0].id);
   }, []);
 
   return (
@@ -60,21 +61,15 @@ function ProfilePage({}: Props) {
                   {currentResult?.title}
                 </h2>
                 <p className="pt-4 text-xl">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab,
-                  pariatur autem. Voluptatem illo officia quae corrupti eligendi
-                  soluta voluptatibus sapiente, aliquam quis adipisci esse
-                  aspernatur odio, commodi eaque ullam repellendus dolor? Libero
-                  dolorem quaerat vel repudiandae velit fugit, est asperiores
-                  deleniti explicabo, omnis minima facilis pariatur ad illo!
-                  Similique, molestiae?
+                {state.currentUser?.email}
                 </p>
               </div>
-              <div className="w-[100%] flex gap-2 bg-gray-50 rounded-r-xl">
-                <div className="flex flex-col gap-2 w-[50%] h-[500px] rounded-xl p-4">
+              <div className="w-[100%] flex gap-2 bg-gray-50 rounded-r-xl p-2">
+                <div className="flex flex-col gap-2 w-[50%] h-[500px] rounded-xl">
                   <TextCard label="Exam" value={currentResult?.title} />
                   <TextCard label="Unit" value={currentResult?.unit} />
                 </div>
-                <div className="flex flex-col gap-2 w-[50%] h-[500px] rounded-xl p-4">
+                <div className="flex flex-col gap-2 w-[50%] h-[500px] rounded-xl">
                   <PrecentageCard
                     label="Marks"
                     value={currentResult?.score?.toString() || ""}
@@ -91,11 +86,11 @@ function ProfilePage({}: Props) {
         <div className="p-2">
           <img className="rounded-xl" src="/img/profile-avatar.jpg" />
         </div>
-        <div className="p-2">
-          <p>Dileepa Samarawickrama</p>
-          <p>Millavitiya Kanishta Vidyalaya</p>
-          <p>Grade 10</p>
-          <p>Average 65.4%</p>
+        <div className="p-2 flex flex-col gap-4">
+          <p className="text-3xl font-semibold">Dileepa Samarawickrama</p>
+          <p className="text-xl">Millavitiya Kanishta Vidyalaya</p>
+          <p className="text-xl">Grade 10</p>
+          <p className="text-xl">Average 65.4%</p>
         </div>
       </div>
     </div>

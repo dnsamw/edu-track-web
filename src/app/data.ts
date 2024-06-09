@@ -11,7 +11,7 @@ export const examResults : ExamResult[] = [
     {id:1, title:'Mathematics 1', score:67, date:'2024-05-28', unit:'12'},
     {id:2, title:'Physics 1', score:78, date:'2024-05-28', unit:'11'},
     {id:3, title:'Chemistry 1', score:85, date:'2024-05-28', unit:'13'},
-    {id:4, title:'Biology 1', score:72, date:'2024-05-28', unit:'14'},
+    {id:4, title:'Biology 1', score:42, date:'2024-05-28', unit:'14'},
     {id:5, title:'English 1', score:90, date:'2024-05-28', unit:'10'},
     {id:6, title:'History 1', score:65, date:'2024-05-28', unit:'9'},
     {id:7, title:'Geography 1', score:88, date:'2024-05-28', unit:'8'},
